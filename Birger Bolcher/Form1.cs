@@ -146,19 +146,20 @@ namespace Birger_Bolcher
             sqlCon.Close();
         }
 
-        //10. Udskriv alle informationer om et søgt bolche (via søgning)
-        //void FillDataGridViewAllBolcherNameToptreBolcherByWight()
-        //{
-        //    if (sqlCon.State == ConnectionState.Closed)
-        //        sqlCon.Open();
-        //    SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectAllBolcherWereTheWightIsBetweenTenAndTwelveGrams", sqlCon);
-        //    sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
-        //    DataTable dtvl = new DataTable();
-        //    sqlDa.Fill(dtvl);
-        //    dataGridView1.DataSource = dtvl;
+        //10. Udskriv alle informationer om et søgt bolche(via søgning)
+        void FillDataGridViewAllBolcherNameBySearch()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.NameSearch", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            sqlDa.SelectCommand.Parameters.AddWithValue("@BolcheName", textBox1.Text.Trim());
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
 
-        //    sqlCon.Close();
-        //}
+            sqlCon.Close();
+        }
 
         //1. Udskriv alle informationer om alle bolcher.
         private void button1_Click(object sender, EventArgs e)
@@ -287,9 +288,18 @@ namespace Birger_Bolcher
             }
         }
 
+        //10. Udskriv alle informationer om et tilfældigt bolche, udvalgt af systemet. (via søgning)
         private void button10_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewAllBolcherNameBySearch();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -298,6 +308,11 @@ namespace Birger_Bolcher
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
