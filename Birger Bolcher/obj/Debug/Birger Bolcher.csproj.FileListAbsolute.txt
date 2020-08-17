@@ -1,0 +1,10 @@
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\bin\Debug\Birger Bolcher.exe.config
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\bin\Debug\Birger Bolcher.exe
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\bin\Debug\Birger Bolcher.pdb
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\obj\Debug\Birger Bolcher.csprojAssemblyReference.cache
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\obj\Debug\Birger_Bolcher.Form1.resources
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\obj\Debug\Birger_Bolcher.Properties.Resources.resources
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\obj\Debug\Birger Bolcher.csproj.GenerateResource.cache
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\obj\Debug\Birger Bolcher.csproj.CoreCompileInputs.cache
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\obj\Debug\Birger Bolcher.exe
+C:\Users\Noah Kühne\Source\Repos\noahkuhne12-Birger-Bolcher-H1\Birger Bolcher\obj\Debug\Birger Bolcher.pdb
