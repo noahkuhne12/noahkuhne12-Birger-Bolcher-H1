@@ -18,12 +18,12 @@ namespace Birger_Bolcher
         {
             InitializeComponent();
         }
-
+        //1. Udskriv alle informationer om alle bolcher.
         void FillDataGridViewAllBolcher()
         {
             if (sqlCon.State == ConnectionState.Closed)
                 sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("selectAllBolcher", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.selectAllBolcher", sqlCon);
             sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
             DataTable dtvl = new DataTable();
             sqlDa.Fill(dtvl);
@@ -32,6 +32,135 @@ namespace Birger_Bolcher
             sqlCon.Close();
         }
 
+        //2. Vis/udskriv navnene på alle de røde bolcher.
+        void FillDataGridViewRedBolcherName()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectAllRedBolcher", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
+
+            sqlCon.Close();
+        }
+
+        //3. Vis/udskriv navnene på alle de røde og de blå bolcher, i samme SQL udtræk.
+        void FillDataGridViewRedOrBlueBolcherName()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectRedOrBlueBolcherName", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
+
+            sqlCon.Close();
+        }
+
+        //4. Vis/udskriv navnene på alle bolcher, der ikke er røde, sorteret alfabetisk.
+        void FillDataGridViewNotRedBolcherName()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectAllBolcherButtNotRedBolcher", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
+
+            sqlCon.Close();
+        }
+
+        //5. Vis/udskriv navnene på alle bolcher som starter med et “B”.
+        void FillDataGridViewAllBolcherNameStratsWithB()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectAllBolcherThatStartsWithB", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
+
+            sqlCon.Close();
+        }
+        //6. Vis/udskriv navnene på alle bolcher, hvor der i navnet findes mindst ét “e”
+        void FillDataGridViewAllBolcherNameThatContensAE()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectAllBolcherWereAEExsist", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
+
+            sqlCon.Close();
+        }
+
+        //7. Vis/udskriv navn og vægt på alle bolcher der vejer mindre end 10 gram, 
+        //sorter dem efter vægt, stigende.
+
+        void FillDataGridViewAllBolcherNameThatWighLesThenTenGrams()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectAllBolcherWightLesTheTenGrams", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
+
+            sqlCon.Close();
+        }
+
+        //8. Vis/udskriv navnene på alle bolcher, der vejer mellem 10 og 12 gram  
+        //(begge tal inklusive), sorteret alfabetisk og derefter vægt.
+        void FillDataGridViewAllBolcherNameThatWighBetweenTenAndTwelveGrams()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectAllBolcherWereTheWightIsBetweenTenAndTwelveGrams", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
+
+            sqlCon.Close();
+        }
+
+        //9. Vælg de tre største (tungeste) bolcher.
+        void FillDataGridViewAllBolcherNameToptreBolcherByWight()
+        {
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectToptreBolcherByWight", sqlCon);
+            sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dtvl = new DataTable();
+            sqlDa.Fill(dtvl);
+            dataGridView1.DataSource = dtvl;
+
+            sqlCon.Close();
+        }
+
+        //10. Udskriv alle informationer om et søgt bolche (via søgning)
+        //void FillDataGridViewAllBolcherNameToptreBolcherByWight()
+        //{
+        //    if (sqlCon.State == ConnectionState.Closed)
+        //        sqlCon.Open();
+        //    SqlDataAdapter sqlDa = new SqlDataAdapter("dbo.SelectAllBolcherWereTheWightIsBetweenTenAndTwelveGrams", sqlCon);
+        //    sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+        //    DataTable dtvl = new DataTable();
+        //    sqlDa.Fill(dtvl);
+        //    dataGridView1.DataSource = dtvl;
+
+        //    sqlCon.Close();
+        //}
+
+        //1. Udskriv alle informationer om alle bolcher.
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -45,44 +174,117 @@ namespace Birger_Bolcher
             }
         }
 
+        //2. Vis/udskriv navnene på alle de røde bolcher.
         private void button2_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewRedBolcherName();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
-
+        //3. Vis/udskriv navnene på alle de røde og de blå bolcher, i samme SQL udtræk.
         private void button3_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewRedOrBlueBolcherName();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
 
+        //4. Vis/udskriv navnene på alle bolcher, der ikke er røde, sorteret alfabetisk.
         private void button4_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewNotRedBolcherName();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
 
+        //5. Vis/udskriv navnene på alle bolcher som starter med et “B”.
         private void button5_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewAllBolcherNameStratsWithB();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
 
+        //6. Vis/udskriv navnene på alle bolcher, hvor der i navnet findes mindst ét “e”
         private void button6_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewAllBolcherNameThatContensAE();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
 
+        //7. Vis/udskriv navn og vægt på alle bolcher der vejer mindre end 10 gram, 
+        //sorter dem efter vægt, stigende.
         private void button7_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewAllBolcherNameThatWighLesThenTenGrams();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
 
+        //8. Vis/udskriv navnene på alle bolcher, der vejer mellem 10 og 12 gram  
+        //(begge tal inklusive), sorteret alfabetisk og derefter vægt.
         private void button8_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewAllBolcherNameThatWighBetweenTenAndTwelveGrams();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
 
+        //9. Vælg de tre største (tungeste) bolcher.
         private void button9_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FillDataGridViewAllBolcherNameToptreBolcherByWight();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message, "Error message");
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -91,6 +293,11 @@ namespace Birger_Bolcher
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
